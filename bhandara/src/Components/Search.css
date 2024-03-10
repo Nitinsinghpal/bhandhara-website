@@ -1,0 +1,30 @@
+.search{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap: 0.4rem;
+}
+.searchTerm{
+    width: 50%;
+    height: 1.6rem;
+    border-radius: 25px;
+    border: none;
+    padding: 0.5rem;
+}
+.searchTerm:focus{
+    border-color: #2563eb;
+    box-shadow: 0 4px 8px rgba(0, 0, 0,0.3);
+    outline: none;
+}
+.searchButton{
+    /* background-color: #2563eb; */
+    width: 20%;
+    height: 2.5rem;
+    border-radius: 25px;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+}
+.searchButton:hover{
+    cursor: pointer;
+}

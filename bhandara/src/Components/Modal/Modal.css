@@ -1,0 +1,82 @@
+.modal-main{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0; 
+    bottom: 0;
+    background-color: rgba(23, 22, 22, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modalCard{
+    background-color: #dddddd;
+    height: 17rem;
+    width: 31%;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(204, 26, 26, 0.3);
+}
+.modalHeader{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: normal;
+    justify-content: end;
+    height: 13%;
+}
+.field{
+    display: flex;
+    padding: 0.2rem;
+}
+.field label{
+    display: inline-block;
+    width: 100%;
+    text-align: start;
+}   
+.field input {
+    display: inline-block;
+    outline: none;
+    width: 50%;
+    height: 1.5rem;
+    border-radius: 0.2rem;
+    border: none;
+
+}
+.field-textarea{
+    outline: none;
+    width: 50%;
+    height: 1.5rem;
+    border-radius: 0.2rem;
+    border: none;
+}
+.formHeaderDescDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formHeaderDesc{
+    font-size: 0.9rem;
+    height: 3rem;
+    max-width: 17rem;
+}
+.labelDiv{
+    width: 50%;
+    display: flex;
+    padding: 5px;
+    justify-content: unset;
+    align-content: flex-end;
+    flex-wrap: wrap;
+}
+.modalSubmitButton{
+    width: 35%;
+    height: 2.5rem;
+    border-radius: 25px;
+    border: none;
+    padding: 0.5rem;
+    background-color: #60a160;
+    
+}
+.modalSubmitButton:hover{
+    cursor: pointer;
+}

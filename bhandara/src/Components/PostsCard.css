@@ -1,0 +1,33 @@
+.card{
+    background-color: aliceblue;
+    /* height: 200px;
+    width: 600px; */
+    display: flex;
+    /* margin-top: 1rem;
+    margin-left: 1rem; */
+    border-radius: 1rem;
+}
+.card-left{
+    width: 50%;
+}
+.card-right{
+    width: 50%;
+    display: flex;
+    align-content: start;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    /* align-items: flex-end; */
+    gap: 1rem;
+
+}
+.card-img{
+    height: 100%;
+    width: 100%;
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+
+}
+.card-right-content{
+    padding: 0.6rem;
+}

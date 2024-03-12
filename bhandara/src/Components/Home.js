@@ -9,18 +9,22 @@ import { db } from "../Db/firebase";
 function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
-  const [postsData, setPostsData] = useState();
+  const [postsData, setPostsData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
+  // let searching=false
   useEffect(() => {
     const q = query(collection(db, "BhandharaPosts"));
-    
+
     const unsub = onSnapshot(q, (querySnapshot) => {
       let todosArray = [];
       querySnapshot.forEach((doc) => {
         todosArray.push({ ...doc.data(), id: doc.id });
       });
-      setPostsData(todosArray);
+      setPostsData(todosArray)
+      setFilteredData(todosArray)
     });
+   
     return () => unsub();
   }, []);
 
@@ -32,24 +36,19 @@ function Home() {
   const closeModal = () => {
     setIsModalOpen(false);
   };
-  // function CheckImage(){
+function filterDataBySearch(value) {
+  // const searchTerm = e.target.value;
+  // setSearchItem(searchTerm)
+  const filteredItems = postsData.filter((item) =>
+  item.dataToSave.city.toLowerCase().includes(value.toLowerCase())
+  );
 
-  //   if(postsData != null)
-  //   {
-  //     let imagec = [];
-  //     postsData.map((d)=>{
-  //       imagec.push(<img src={d.image}/>)
-  //     })
-  //     return imagec;
-  //   }
-    
-  // }
+  setFilteredData(filteredItems);
+}
   return (
     <div className="home-main">
-    {/* <img src={postsData[0].dataToSave.image}/> */}
-      <Search openModal={openModal} />
-      {/* <Post/> */}
-      <Posts data={postsData}/>
+      <Search openModal={openModal} searchByValue={filterDataBySearch} />
+      <Posts data={filteredData} />
       <Modal
         isModalOpen={isModalOpen}
         modalContent={modalContent}

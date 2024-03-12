@@ -12,7 +12,7 @@
 
 .modalCard{
     background-color: #dddddd;
-    height: 17rem;
+    height: 27rem;
     width: 31%;
     padding: 30px;
     border-radius: 15px;
@@ -34,7 +34,16 @@
     width: 100%;
     text-align: start;
 }   
-.field input {
+/* .field input {
+    display: inline-block;
+    outline: none;
+    width: 50%;
+    height: 1.5rem;
+    border-radius: 0.2rem;
+    border: none;
+
+} */
+.inputFields {
     display: inline-block;
     outline: none;
     width: 50%;

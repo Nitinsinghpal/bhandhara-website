@@ -3,7 +3,18 @@
     width: 100%;
     /* background-color: brown; */
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
     margin-top: 1rem;
 }
+
+@media screen and (max-width: 1079px) {
+    .posts-main{
+        grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (max-width: 794px) {
+    .posts-main{
+        grid-template-columns: repeat(1, 1fr);
+    }
+  }

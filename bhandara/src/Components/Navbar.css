@@ -39,3 +39,9 @@
     font-weight: 600;
     padding: 0.75rem 1.5rem;
 }
+@media screen and (max-width: 412px) {
+   .header-content{
+    gap: 2rem;
+    flex-wrap: wrap;
+   }
+   }

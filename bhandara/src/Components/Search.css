@@ -4,6 +4,9 @@
    align-items: center;
    gap: 0.4rem;
 }
+.search input{
+    border: 2px solid #a4a4bf;
+}
 .searchTerm{
     width: 50%;
     height: 1.6rem;
@@ -27,4 +30,25 @@
 }
 .searchButton:hover{
     cursor: pointer;
+    background-color:  #5dbea3;
+
 }
+.searchButton:active{
+    background-color:Hex #232726;
+
+}
+
+@media screen and (max-width: 794px) {
+   #search{
+    display: none;
+   }
+   .search{
+    justify-content: flex-start;
+   }
+  }
+
+  @media screen and (max-width: 412px) {
+   .searchButton{
+    width: 53%;
+   }
+   } 

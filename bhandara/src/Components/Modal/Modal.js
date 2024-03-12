@@ -1,20 +1,44 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import "./Modal.css";
 import { db, storage } from "../../Db/firebase";
 import { addDoc, collection } from "firebase/firestore";
 import { ref, getDownloadURL, uploadBytesResumable } from "firebase/storage";
+import { format } from "date-fns";
+import { Country, State, City } from "country-state-city";
+
 function Modal({ isModalOpen, modalContent, onClose }) {
+  const date = new Date();
+  const formattedDate = format(date, "MMM dd, yyyy");
   let init = {
     address: "",
     locationLink: "",
     desc: "",
+    date: formattedDate,
+    country: "",
+    state: "",
+    city: "",
     image: "",
     verified: false,
   };
+  let selectedValueInit = { country: "IN", state: "HR", city: "" };
   let dataToSave = {};
+  let CountryOptions = [];
+  let StatesOptions = [];
+  let CitiesOptions = [];
+  let optionSelected = "";
+
+  let countries;
+  let StatesOfCountry;
+  let CitiesOfState;
   const [formData, setFormData] = useState(init);
+  const [selectedValue, setSelectedValue] = useState(selectedValueInit);
   // const [imageUrl, setImageUrl] = useState();
+
+  countries = Country.getAllCountries();
+  useEffect(() => {
+    DropDownData(optionSelected);
+  }, [selectedValue]);
 
   if (isModalOpen !== true) {
     return null;
@@ -58,15 +82,67 @@ function Modal({ isModalOpen, modalContent, onClose }) {
       dataToSave,
       completed: false,
     });
- 
+    onClose();
+    alert(
+      "Your post will add after verification, Thanks for your contribution"
+    );
+
+    setFormData(init);
   }
   async function submitForm(event) {
     event.preventDefault();
-    const file = event.target[3].files[0];
+    const file = event.target[7].files[0];
     await UploadImage(file);
   }
+  function DropDownData(CSC) {
+    debugger;
+    switch (CSC) {
+      case "country":
+        countries = Country.getAllCountries();
+        return DropDownOptions(countries, CountryOptions);
+        break;
+      case "state":
+        StatesOfCountry = State.getStatesOfCountry(selectedValue.country);
+        return DropDownOptions(StatesOfCountry, StatesOptions);
+
+        break;
+      case "city":
+        debugger;
+        CitiesOfState = City.getCitiesOfState(
+          selectedValue.country,
+          selectedValue.state
+        );
+        return DropDownOptions(CitiesOfState, CitiesOptions);
+        break;
+
+      default:
+        break;
+    }
+  }
+  function DropDownOptions(params, optionsArray) {
+    if (params != null && params != undefined) {
+      params.map((d) => {
+        optionsArray.push(<option value={d.isoCode}>{d.name}</option>);
+      });
+      return optionsArray;
+    } else {
+      return <option value="selectValue">Select value</option>;
+    }
+  }
+  function handleDropDownChange(event) {
+    debugger
+    setSelectedValue({
+      ...selectedValue,
+      [event.target.name]: event.target.value,
+    });
+    optionSelected = event.target.name;  // For dropDownData that is passed in useEffect
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+  }
   return (
-    <div className="modal-main">
+    <div id="modal" className="modal-main">
       <div className="modalCard">
         <div className="modalHeader">
           <IoMdClose onClick={onClose} />
@@ -85,9 +161,54 @@ function Modal({ isModalOpen, modalContent, onClose }) {
               <input
                 name="address"
                 type="text"
+                className="inputFields"
                 value={formData.address}
                 onChange={changeHandler}
               />
+            </div>
+            <div className="field">
+              <div className="labelDiv">
+                <label for="country">Country</label>
+              </div>
+              <select
+                name="country"
+                className="inputFields"
+                value={formData.country}
+                onChange={handleDropDownChange}
+              >
+                <option selected>select country</option>
+                {DropDownData("country")}
+              </select>
+            </div>
+            <div className="field">
+              <div className="labelDiv">
+                <label for="state">State</label>
+              </div>
+              <select
+                name="state"
+                className="inputFields"
+                value={formData.state}
+                onChange={handleDropDownChange}
+              >
+                <option selected>select state</option>
+
+                {DropDownData("state")}
+              </select>
+            </div>
+            <div className="field">
+              <div className="labelDiv">
+                <label for="city">City</label>
+              </div>
+              <select
+                name="city"
+                className="inputFields"
+                value={formData.city}
+                onChange={handleDropDownChange}
+              >
+                <option selected>select city</option>
+
+                {DropDownData("city")}
+              </select>
             </div>
             <div className="field">
               <div className="labelDiv">
@@ -96,6 +217,7 @@ function Modal({ isModalOpen, modalContent, onClose }) {
               <input
                 name="locationLink"
                 type="text"
+                className="inputFields"
                 value={formData.locationLink}
                 onChange={changeHandler}
               />
@@ -114,6 +236,18 @@ function Modal({ isModalOpen, modalContent, onClose }) {
             </div>
             <div className="field">
               <div className="labelDiv">
+                <label for="date">Date</label>
+              </div>
+              <input
+                name="date"
+                type="date"
+                className="inputFields"
+                value={formData.date}
+                onChange={changeHandler}
+              />
+            </div>
+            <div className="field">
+              <div className="labelDiv">
                 <label for="image">Image</label>
               </div>
               <input
@@ -125,7 +259,11 @@ function Modal({ isModalOpen, modalContent, onClose }) {
               />
             </div>
             <div className="modalSubmitButtonDiv">
-              <button type="submit" className="modalSubmitButton" variant="contained">
+              <button
+                type="submit"
+                className="modalSubmitButton"
+                variant="contained"
+              >
                 Submit
               </button>
             </div>

@@ -17,15 +17,15 @@ function Navbar() {
             Home
           </Link>
 
-          <a href="/addPost" className="nav-link">
+          {/* <a href="#modal" className="nav-link">
             AddPost
-          </a>
-          <a href="#pricing" className="nav-link">
+          </a> */}
+          {/* <a href="#pricing" className="nav-link">
             Pricing
           </a>
           <a href="#blog" className="nav-link">
             Blog
-          </a>
+          </a> */}
           <a href="#about" className="nav-link">
             About
           </a>

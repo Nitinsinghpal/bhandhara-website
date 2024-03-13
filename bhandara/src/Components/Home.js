@@ -6,6 +6,7 @@ import AddPost from "./AddPost";
 import Modal from "./Modal/Modal";
 import { collection, onSnapshot, query } from "firebase/firestore";
 import { db } from "../Db/firebase";
+import Feedback from "./Feedback/Feedback";
 function Home() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalContent, setModalContent] = useState("");
@@ -54,6 +55,7 @@ function filterDataBySearch(value) {
         modalContent={modalContent}
         onClose={closeModal}
       />
+      <Feedback/>
     </div>
   );
 }

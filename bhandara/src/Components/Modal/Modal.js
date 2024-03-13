@@ -33,6 +33,8 @@ function Modal({ isModalOpen, modalContent, onClose }) {
   let CitiesOfState;
   const [formData, setFormData] = useState(init);
   const [selectedValue, setSelectedValue] = useState(selectedValueInit);
+  const [buttonClicked, setButtonClicked] = useState(false);
+
   // const [imageUrl, setImageUrl] = useState();
 
   countries = Country.getAllCountries();
@@ -81,16 +83,22 @@ function Modal({ isModalOpen, modalContent, onClose }) {
     addDoc(collection(db, "BhandharaPosts"), {
       dataToSave,
       completed: false,
+    }).then((d)=>{
+setButtonClicked(false)
+alert(
+  "Your post will add after verification, Thanks for your contribution"
+);
+    }).catch((e)=>{
+      console.log(e)
     });
     onClose();
-    alert(
-      "Your post will add after verification, Thanks for your contribution"
-    );
+   
 
     setFormData(init);
   }
   async function submitForm(event) {
     event.preventDefault();
+    setButtonClicked(true)
     const file = event.target[7].files[0];
     await UploadImage(file);
   }
@@ -264,7 +272,11 @@ function Modal({ isModalOpen, modalContent, onClose }) {
                 className="modalSubmitButton"
                 variant="contained"
               >
-                Submit
+                 {buttonClicked ? (
+                <i class="fa fa-spinner fa-spin"></i>
+              ) : (
+                "Submit"
+              )}
               </button>
             </div>
           </form>

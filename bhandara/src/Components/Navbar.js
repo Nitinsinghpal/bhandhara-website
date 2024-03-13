@@ -26,9 +26,12 @@ function Navbar() {
           <a href="#blog" className="nav-link">
             Blog
           </a> */}
-          <a href="#about" className="nav-link">
+         <Link to="/about" className="nav-link">
             About
-          </a>
+          </Link>
+          <Link to="/contact" className="nav-link">
+            Contact Us
+          </Link>
         </nav>
 
         {/* <a href="#contact" className="contact-button">

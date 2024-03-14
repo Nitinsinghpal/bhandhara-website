@@ -13,3 +13,30 @@
     height: 2.5rem;
     width: 2.5rem;
 }
+.logoDiv{
+    width: 40%;
+    padding: 2px;
+}
+.OtherLinks{
+    width: 60%;
+    display: flex;
+    gap: 1rem;
+
+}
+@media screen and (max-width: 664px){
+    .footer-main{
+        flex-direction: column;
+        font-size: 10px;
+        height: 80px;
+    }
+    .logoDiv{
+        width: 100%;
+        padding: 2px;
+    }
+    .OtherLinks{
+        display: flex;
+    gap: 0.6rem;
+
+    }
+   
+}

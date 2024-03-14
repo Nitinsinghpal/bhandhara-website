@@ -130,11 +130,11 @@ alert(
   function DropDownOptions(params, optionsArray) {
     if (params != null && params != undefined) {
       params.map((d) => {
-        optionsArray.push(<option value={d.isoCode}>{d.name}</option>);
+        optionsArray.push(<option className="fields-option" value={d.isoCode}>{d.name}</option>);
       });
       return optionsArray;
     } else {
-      return <option value="selectValue">Select value</option>;
+      return <option className="fields-option" value="selectValue">Select value</option>;
     }
   }
   function handleDropDownChange(event) {
@@ -184,7 +184,7 @@ alert(
                 value={formData.country}
                 onChange={handleDropDownChange}
               >
-                <option selected>select country</option>
+                <option className="fields-option" selected>select country</option>
                 {DropDownData("country")}
               </select>
             </div>
@@ -264,6 +264,7 @@ alert(
                 type="file"
                 multiple
                 accept="image/*"
+                className="field-image"
               />
             </div>
             <div className="modalSubmitButtonDiv">

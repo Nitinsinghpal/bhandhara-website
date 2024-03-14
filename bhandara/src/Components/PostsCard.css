@@ -5,7 +5,7 @@
     height: 360px;
     padding: 10px;
     min-height: 200px;
-    width: fit-content;
+    /* width: fit-content; */
     overflow: hidden;
     flex-direction: column;
 }

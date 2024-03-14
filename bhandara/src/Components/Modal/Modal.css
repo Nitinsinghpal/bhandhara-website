@@ -12,7 +12,7 @@
 
 .modalCard{
     background-color: #dddddd;
-    height: 27rem;
+    height: auto;
     width: 31%;
     padding: 30px;
     border-radius: 15px;
@@ -29,10 +29,12 @@
     display: flex;
     padding: 0.2rem;
 }
+
 .field label{
     display: inline-block;
     width: 100%;
     text-align: start;
+    /* font-size: 0.5rem; */
 }   
 /* .field input {
     display: inline-block;
@@ -89,3 +91,38 @@
 .modalSubmitButton:hover{
     cursor: pointer;
 }
+@media screen and (max-width: 998px) {
+    .field{
+        height: auto;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .field label{
+        font-size: 0.7rem;
+
+    }
+    .inputFields, .field-textarea, .fields-option{
+        font-size: 0.7rem;
+    }
+   .field-image{
+    width: 132px;
+    font-size: 0.5rem;
+   }
+    }
+    
+
+    @media screen and (max-width: 400px) {
+       .labelDiv,.inputFields,.field-textarea{
+        width: 100%;
+
+       }
+       .formHeaderDesc{
+        font-size: 0.6rem;
+       }
+       .modalSubmitButton{
+        width: 85%;
+        margin-top: 10px;
+       }
+        }
+        

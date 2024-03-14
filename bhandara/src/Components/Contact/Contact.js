@@ -22,7 +22,7 @@ function Contact() {
       });
   }
   return (
-    <div>
+    <div className="contact">
 
     <div className="contactMain">
         <div className="contact-heading">

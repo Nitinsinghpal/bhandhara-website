@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Navbar.css";
 import logo from "../Images/masala-dosa.png";
 import { Link } from "react-router-dom";
+import { IoClose, IoMenu } from "react-icons/io5";
+import SideNav from "./SideNav/SideNav";
 function Navbar() {
+  const [sideNav, SetSideNav] =useState(false)
+  function openSideNav() {
+    SetSideNav(!sideNav)
+  }
+  function closeSideNav() {
+    // alert("close")
+    SetSideNav(!sideNav)
+    
+  }
   return (
     <div className="header">
       <header className="header-content">
@@ -40,6 +51,13 @@ function Navbar() {
         {/* <button type="button" className="menu-button">
             <img src={hamburger} alt="menuButton" className="menu-icon" />
           </button> */}
+           <div className="nav__toggle" id="nav-toggle">
+         <IoMenu onClick={openSideNav}/>
+         </div>
+         {sideNav ? (<SideNav sideNav={sideNav} close={closeSideNav}/>):(<></>)}
+         {/* <div className="nav-close" id="nav-close">
+           <IoClose />
+         </div> */} 
       </header>
     </div>
   );

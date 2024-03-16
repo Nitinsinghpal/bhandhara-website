@@ -35,6 +35,7 @@ function Modal({ isModalOpen, modalContent, onClose }) {
   const [selectedValue, setSelectedValue] = useState(selectedValueInit);
   const [buttonClicked, setButtonClicked] = useState(false);
 
+  
   // const [imageUrl, setImageUrl] = useState();
 
   countries = Country.getAllCountries();
@@ -103,7 +104,6 @@ alert(
     await UploadImage(file);
   }
   function DropDownData(CSC) {
-    debugger;
     switch (CSC) {
       case "country":
         countries = Country.getAllCountries();
@@ -115,7 +115,6 @@ alert(
 
         break;
       case "city":
-        debugger;
         CitiesOfState = City.getCitiesOfState(
           selectedValue.country,
           selectedValue.state
@@ -138,7 +137,6 @@ alert(
     }
   }
   function handleDropDownChange(event) {
-    debugger
     setSelectedValue({
       ...selectedValue,
       [event.target.name]: event.target.value,

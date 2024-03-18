@@ -7,7 +7,15 @@
     gap: 1rem;
     margin-top: 1rem;
 }
-
+.noPostAvailable-main{
+    margin-top: 1rem;
+    background-color: antiquewhite;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+}
 @media screen and (max-width: 1079px) {
     .posts-main{
         grid-template-columns: repeat(2, 1fr);

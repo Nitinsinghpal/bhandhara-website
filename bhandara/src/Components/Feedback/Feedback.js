@@ -23,6 +23,7 @@ function Feedback() {
     })
       .then( (d) => {
         setButtonClicked(false);
+        setFormData()
         alert('thanks for your feedback')
       })
       .catch((e) => {

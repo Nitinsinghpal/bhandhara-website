@@ -8,7 +8,7 @@ function Footer() {
       <div className="logoDiv">
         <a href="/" className="logo">
           <img src={logo} alt="logoImage" className="logo-icon" />
-          <span className="logo-text">Bhandara</span>
+          <span className="logo-text">Bhandhara</span>
         </a>
       </div>
       <div className="OtherLinks">  

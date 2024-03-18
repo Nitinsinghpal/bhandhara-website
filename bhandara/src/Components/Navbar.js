@@ -20,7 +20,7 @@ function Navbar() {
         <Link to="/" className="nav-link">
           <a href="#logo" className="logo">
             <img src={logo} alt="logoImage" className="logo-icon" />
-            <span className="logo-text">Bhandara</span>
+            <span className="logo-text">Bhandhara</span>
           </a>
         </Link>
         <nav className="nav">
